@@ -1,49 +1,49 @@
 choice = 'y'
 
-while choice =='y' : # make 'Y' valid too
+while choice =='y' or choice =='Y' : # make 'Y' valid too
     try:
         # typecast the below 2 to a list
         
-        numbers =input("Enter the input numbers separated by spaces: ")
-        operators = input("Enter operators between them: ")
+        numbers =[int(x) for x in input("Enter the input numbers separated by spaces: ").split()]
+        operators = [str(x) for x in input("Enter operators between them: "). split()]
 
         # check length matching
 
-        if len(numbers) != len(operators): # this seems odd... u might say it's ... off by one
-            print("What u doin fam ? ") # replace wiht better message :)
+        if len(numbers)-1 != len(operators): # this seems odd... u might say it's ... off by one
+            print("Hey there watch out ") # replace wiht better message :)
             continue
         
-        flag = False # huh this seems inverted
-        for i in range(len(numbers)): # indexing range fix
+        flag = True # huh this seems inverted
+        for i in range(len(numbers)-1): # indexing range fix
             a, b, op = numbers[i-1], numbers[i], operators[i]
             # correct the ops
             match op:
                 case '+':
                     c = a + b
                 case '-':
-                    c = a * b
-                case '*':
-                    c = a / b
-                case '/':
-                    c = a % b
-                case '%':
                     c = a - b
+                case '*':
+                    c = a * b
+                case '/':
+                    c = a / b
+                case '%':
+                    c = a % b
                 case '//':
-                    c = a ** b
-                case '**':
                     c = a // b
+                case '**':
+                    c = a ** b
                 case _:
-                    flag = True
+                    flag = False
             if not flag:
                 print("Invalid ops vro")
                 break
 
-            numbers[i-1] = c
+            numbers[i+1] = c
         if not flag:
             continue
-        print(f"Output: numbers[-1]")
-    except Exception:
-        print(f"Exception: ...") # print exception
+        print(f"Output: {numbers[-1]}")
+    except Exception as err:
+        print(f"Exception: ",err) # print exception
     finally:
         choice = input("Do you want to continue? [y/n] : ") # always ask before ending
 
