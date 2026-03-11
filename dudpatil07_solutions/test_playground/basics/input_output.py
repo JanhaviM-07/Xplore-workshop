@@ -17,7 +17,7 @@ print(type(array)) # should output 'list'
 
 nums = list([1,2,3,4])
 
-print(nums) # print it as a string joined by commas : 1,2,3,4
+print(','.join([str(s) for s in nums])) # print it as a string joined by commas : 1,2,3,4
 
 
 name = input("Enter your name: ")
