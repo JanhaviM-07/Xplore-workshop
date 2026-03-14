@@ -1,6 +1,6 @@
 choice = 'y'
 
-while (choice =='y' or choice == 'y') :
+while (choice =='y' or choice == 'Y') :
     try:
         numbers = input("Enter the input numbers separated by spaces: ").split(" ")
         operators = input("Enter operators between them: ").split(" ")
